@@ -9,7 +9,7 @@ const createElements = () => {
 };
 
 const renderTimer = (elements, timer, time) => {
-  const { li, span, btn } = elements;
+  const { span, btn } = elements;
 
   span.innerHTML = `Осталось ${time} секунд`;
   btn.innerHTML = '&times;';
@@ -17,8 +17,6 @@ const renderTimer = (elements, timer, time) => {
   btn.addEventListener('click', () => {
     removeTimer(elements, timer);
   });
-
-  return li;
 };
 
 const removeTimer = (elements, timer) => {
@@ -38,9 +36,9 @@ const createTimer = (time) => {
     }
   }, 1000);
 
-  const item = renderTimer(elements, timer, time);
+  renderTimer(elements, timer, time);
 
-  return item;
+  return elements.li;
 };
 
 export default createTimer;

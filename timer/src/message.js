@@ -6,4 +6,4 @@ const removeMessage = (container) => {
   container.innerHTML = '';
 }
 
-export {addMessage, removeMessage};
+export { addMessage, removeMessage };
