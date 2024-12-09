@@ -2,11 +2,15 @@ import './style.css'
 import { setupCounter } from './counter.js'
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-  </div>
+  <form>
+    <label for="time-input">
+      <p>Введите время в секундах</p>
+      <input type="number" id="time-input">
+    </label>
+    <button id="add-timer">Добавить таймер</button>
+  </form>
+  <ul id="timers">
+    <!-- Таймеры будут добавляться сюда -->
+  </ul>
 `
-setupCounter(document.querySelector('#counter'))
+// setupCounter(document.querySelector('#counter'))
