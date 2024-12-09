@@ -1,6 +1,6 @@
 import './style.css';
 import createTimer from './timer.js';
-import { addMessage, removeMessage} from './message.js';
+import { addMessage, removeMessage } from './message.js';
 
 const render = (app) => {
   app.innerHTML = `
@@ -12,31 +12,29 @@ const render = (app) => {
       <button type="submit" id="add-timer">Запустить таймер</button>
     </form>
     <div id="message"></div>
-    <ul id="timers">
-      <!-- Таймеры будут добавляться сюда -->
-    </ul>
+    <ul id="timers"></ul>
   `;
 
   const form = document.querySelector('form');
   const input = form.querySelector('input');
   const message = document.querySelector('#message');
-  const container = document.querySelector('#timers');
+  const timers = document.querySelector('#timers');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const time = input.value;
-    
+
     form.reset();
     input.focus();
 
     if (time && time > 0) {
       removeMessage(message);
-      createTimer(container, time);
+      const timer = createTimer(time);
+      timers.append(timer);
     } else {
       addMessage(message);
     };
   });
-
 };
 
 render(document.querySelector('#app'));

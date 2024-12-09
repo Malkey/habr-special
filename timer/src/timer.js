@@ -1,31 +1,46 @@
-const createTimer = (container, time) => {
+const createElements = () => {
   const li = document.createElement('li');
   const span = document.createElement('span');
   const btn = document.createElement('button');
 
+  li.append(span, btn);
+  
+  return { li, span, btn };
+};
+
+const renderTimer = (elements, timer, time) => {
+  const { li, span, btn } = elements;
+
   span.innerHTML = `Осталось ${time} секунд`;
   btn.innerHTML = '&times;';
 
-  li.append(span, btn);
-  container.append(li);
+  btn.addEventListener('click', () => {
+    removeTimer(elements, timer);
+  });
+
+  return li;
+};
+
+const removeTimer = (elements, timer) => {
+  clearInterval(timer);
+  elements.li.remove();
+};
+
+const createTimer = (time) => {
+  const elements = createElements();
 
   const timer = setInterval(() => {
+    time -= 1;
     if (time > 0) {
-      time -= 1;
-      span.innerHTML = `Осталось ${time} секунд`;
+      renderTimer(elements, timer, time);
     } else {
-      removeTimer();
+      removeTimer(elements, timer);
     }
   }, 1000);
 
-  const removeTimer = () => {
-    clearInterval(timer);
-    li.remove();
-  };
+  const item = renderTimer(elements, timer, time);
 
-  btn.addEventListener('click', () => {
-    removeTimer();
-  });
+  return item;
 };
 
 export default createTimer;
