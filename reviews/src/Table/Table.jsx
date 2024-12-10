@@ -1,9 +1,30 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { getData, setFilters, sortData } from '../redux/actions';
 
 const Table = () => {
-    const reviews = useSelector((state) => state.reviews);
+    const dispatch = useDispatch();
+    const { filteredData } = useSelector((state) => state);
 
-    const reviewsRows = reviews.map(item => (
+    useEffect(() => {
+        dispatch(getData());
+
+        // TODO: перенести в компонент фильтра
+
+        // dispatch(setFilters({
+        //     platform: '2ГИС',
+        //     ratingRange: [4, 10],
+        // }));
+
+        // TODO: перенести в кнопки сортировки
+
+        // dispatch(sortData({
+        //     by: 'date',
+        //     order: 'asc',
+        // }));
+    }, []);
+
+    const rows = filteredData.map(item => (
         <tr key={item.id}>
             <td>{item.platform}</td>
             <td>{item.rating}</td>
@@ -23,7 +44,7 @@ const Table = () => {
                 </tr>
             </thead>
             <tbody>
-                {reviewsRows}
+                {rows}
             </tbody>
         </table>
     );

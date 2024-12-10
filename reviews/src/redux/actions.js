@@ -1,20 +1,19 @@
-const filterByPlatform = (platform) => ({
-    type: 'FILTER_BY_PLATFORM',
-    payload: platform,
+const getData = () => ({
+    type: 'GET_DATA',
 });
 
-const filterByRating = ({ gte, lte }) => ({
-    type: 'FILTER_BY_RATING',
-    payload: { gte, lte },
+const setFilters = ({ platform, ratingRange }) => ({
+    type: 'SET_FILTERS',
+    payload: { platform, ratingRange },
 });
 
-const sortData = ({ sortKey, isAsc }) => ({
+const sortData = ({ by, order }) => ({
     type: 'SORT_DATA',
-    payload: { sortKey, isAsc },
+    payload: { by, order },
 });
 
 export {
-    filterByPlatform,
-    filterByRating,
+    getData,
+    setFilters,
     sortData,
 }
