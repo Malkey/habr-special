@@ -8,22 +8,32 @@ const Filters = () => {
     
     const handleChange = useCallback((e) => {
         dispatch(sortData({
-            by: e.target.name,
+            by: e.target.dataset.by,
             order: e.target.value,
         }));
     }, [dispatch]);
 
     return (
-        <div className="sorting">
+        <form className="sorting" onChange={handleChange}>
             <div>
                 <p>Сортировать по дате</p>
                 <label>
                     Сначала новые
-                    <input type="radio" name="date" value="desc" onChange={handleChange} />
+                    <input
+                        type="radio"
+                        name="sort"
+                        value="desc"
+                        data-by="date"
+                    />
                 </label>
                 <label>
                     Сначала старые
-                    <input type="radio" name="date" value="asc" onChange={handleChange} />
+                    <input
+                        type="radio"
+                        name="sort"
+                        value="asc"
+                        data-by="date"
+                    />
                 </label>
             </div>
 
@@ -31,14 +41,24 @@ const Filters = () => {
                 <p>Сортировать по оценке</p>
                 <label>
                     По убыванию
-                    <input type="radio" name="rating" value="desc" onChange={handleChange} />
+                    <input
+                        type="radio"
+                        name="sort"
+                        value="desc"
+                        data-by="rating"
+                    />
                 </label>
                 <label>
                     По возрастанию
-                    <input type="radio" name="rating" value="asc" onChange={handleChange} />
+                    <input
+                        type="radio"
+                        name="sort"
+                        value="asc"
+                        data-by="rating"
+                    />
                 </label>
             </div>
-        </div>
+        </form>
     );
 };
 
