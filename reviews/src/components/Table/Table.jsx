@@ -15,7 +15,7 @@ const Table = () => {
         <tr key={item.id}>
             <td>{item.platform}</td>
             <td>{item.rating}</td>
-            <td>{item.date}</td>
+            <td>{new Date(item.date).toLocaleDateString('ru-RU')}</td>
             <td>{item.text}</td>
         </tr>
     ));
