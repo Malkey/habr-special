@@ -1,20 +1,25 @@
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { sortData } from '../../redux/actions';
 import './Sorting.css';
 
 const Filters = () => {
     const dispatch = useDispatch();
+    const { by, order } = useSelector(state => state.sort);
     
     const handleChange = useCallback((e) => {
         dispatch(sortData({
             by: e.target.dataset.by,
-            order: e.target.value,
+            order: e.target.dataset.order,
         }));
     }, [dispatch]);
 
+    const isChecked = useCallback((checkboxBy, checkboxOrder) => {
+        return by === checkboxBy && order === checkboxOrder;
+    }, [by, order]);
+
     return (
-        <form className="sorting" onChange={handleChange}>
+        <form className="sorting">
             <div>
                 <p>Сортировать по дате</p>
                 <label>
@@ -22,8 +27,10 @@ const Filters = () => {
                     <input
                         type="radio"
                         name="sort"
-                        value="desc"
                         data-by="date"
+                        data-order="desc"
+                        onChange={handleChange}
+                        checked={isChecked('date', 'desc')}
                     />
                 </label>
                 <label>
@@ -31,8 +38,10 @@ const Filters = () => {
                     <input
                         type="radio"
                         name="sort"
-                        value="asc"
                         data-by="date"
+                        data-order="asc"
+                        onChange={handleChange}
+                        checked={isChecked('date', 'asc')}
                     />
                 </label>
             </div>
@@ -44,8 +53,10 @@ const Filters = () => {
                     <input
                         type="radio"
                         name="sort"
-                        value="desc"
                         data-by="rating"
+                        data-order="desc"
+                        onChange={handleChange}
+                        checked={isChecked('rating', 'desc')}
                     />
                 </label>
                 <label>
@@ -53,8 +64,10 @@ const Filters = () => {
                     <input
                         type="radio"
                         name="sort"
-                        value="asc"
                         data-by="rating"
+                        data-order="asc"
+                        onChange={handleChange}
+                        checked={isChecked('rating', 'asc')}
                     />
                 </label>
             </div>

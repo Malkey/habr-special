@@ -1,3 +1,5 @@
+import { sortData } from "./../utils/sortData";
+
 const initialState = {
     data: [
         {
@@ -28,18 +30,20 @@ const initialState = {
         ratingRange: [1, 10],
     },
     sort: {
-        by: 'rating',
-        order: 'asc',
+        by: 'date',
+        order: 'desc',
     },
 };
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_DATA': {
-            // временное решение — просто кладу data в filteredData
+            const { data } = state;
+            const { by, order } = state.sort;
+            const sortedData = sortData(data, by, order);
             return {
                 ...state,
-                filteredData: state.data,
+                filteredData: sortedData,
             };
         }
         case 'SET_FILTERS': {
@@ -55,16 +59,7 @@ export const reducer = (state = initialState, action) => {
         }
         case 'SORT_DATA': {
             const { by, order } = action.payload;
-            const sortedData = [...state.filteredData].sort((a, b) => {
-                switch (by) {
-                    case 'rating':
-                        return order === 'asc' ? a.rating - b.rating : b.rating - a.rating;
-                    case 'date':
-                        return  order === 'asc' ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
-                    default:
-                        return 0;
-                }
-            });
+            const sortedData = sortData(state.filteredData, by, order);
             return {
                 ...state,
                 filteredData: sortedData,
