@@ -27,7 +27,7 @@ const RatingFilter = () => {
     return (
         <div className='rating-filters'>
             <p>Рейтинг</p>
-            <div>
+            <form>
                 <input 
                     type="number"
                     name="gte"
@@ -44,7 +44,7 @@ const RatingFilter = () => {
                     ref={ratingFilterLte}
                     onChange={handleRatingFilter}
                 />
-            </div>
+            </form>
         </div>
     );
 };
