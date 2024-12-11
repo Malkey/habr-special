@@ -24,7 +24,7 @@ const initialState = {
     ],
     filteredData: [],
     filters: {
-        platform: '',
+        platforms: [],
         ratingRange: [1, 10],
     },
     sort: {
@@ -43,13 +43,12 @@ export const reducer = (state = initialState, action) => {
             };
         }
         case 'SET_FILTERS': {
-            const { platform, ratingRange } = action.payload;
-            // TODO: переписать фильтры по платформе на массив
+            const { platforms, ratingRange } = action.payload;
             return {
                 ...state,
-                filters: { platform, ratingRange },
-                filteredData: state.data.filter(item => 
-                    (platform ? item.platform === platform : true) &&
+                filters: { platforms, ratingRange },
+                filteredData: state.data.filter(item =>
+                    (platforms.length ? platforms.includes(item.platform) : true) &&
                     (item.rating >= ratingRange[0] && item.rating <= ratingRange[1])
                 ),
             };
@@ -59,7 +58,7 @@ export const reducer = (state = initialState, action) => {
             const sortedData = [...state.filteredData].sort((a, b) => {
                 switch (by) {
                     case 'rating':
-                        return order === 'asc' ? a.rating - b.rating : b.rating - a.rating ;
+                        return order === 'asc' ? a.rating - b.rating : b.rating - a.rating;
                     case 'date':
                         return  order === 'asc' ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
                     default:

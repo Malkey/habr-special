@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilters } from '../../../redux/actions';
 
@@ -10,13 +10,17 @@ const RatingFilter = () => {
     const ratingFilterLte = useRef();
 
     const handleRatingFilter = useCallback(() => {
-        const [ gte, lte ] = [ ratingFilterGte.current.value, ratingFilterLte.current.value ];
+        const [ gte, lte ] = [ 
+            ratingFilterGte.current.value, 
+            ratingFilterLte.current.value,
+        ];
+
         // TODO: добавить проверку на отрицательное число
         dispatch(setFilters({
             ...filters,
             ratingRange: [ gte, lte ],
         }));
-    }, []);
+    }, [filters, dispatch]);
 
     return (
         <>

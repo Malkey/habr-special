@@ -2,9 +2,9 @@ const getData = () => ({
     type: 'GET_DATA',
 });
 
-const setFilters = ({ platform, ratingRange }) => ({
+const setFilters = ({ platforms, ratingRange }) => ({
     type: 'SET_FILTERS',
-    payload: { platform, ratingRange },
+    payload: { platforms, ratingRange },
 });
 
 const sortData = ({ by, order }) => ({
