@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getData, setFilters, sortData } from '../redux/actions';
+import { getData } from '../../redux/actions';
 
 const Table = () => {
     const dispatch = useDispatch();
@@ -8,20 +8,6 @@ const Table = () => {
 
     useEffect(() => {
         dispatch(getData());
-
-        // TODO: перенести в компонент фильтра
-
-        // dispatch(setFilters({
-        //     platform: '2ГИС',
-        //     ratingRange: [4, 10],
-        // }));
-
-        // TODO: перенести в кнопки сортировки
-
-        // dispatch(sortData({
-        //     by: 'date',
-        //     order: 'asc',
-        // }));
     }, []);
 
     const rows = filteredData.map(item => (
@@ -34,13 +20,13 @@ const Table = () => {
     ));
     
     return (
-        <table>
+        <table style={{ textAlign: 'left' }}>
             <thead>
                 <tr>
                     <th>Платформа</th>
                     <th>Рейтинг</th>
-                    <th>Время</th>
-                    <th>Отзывы</th>
+                    <th>Время добавления</th>
+                    <th>Текст отзыва</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +34,6 @@ const Table = () => {
             </tbody>
         </table>
     );
-}
+};
 
 export default Table;

@@ -25,7 +25,7 @@ const initialState = {
     filteredData: [],
     filters: {
         platform: '',
-        raringRange: [1, 5],
+        ratingRange: [1, 10],
     },
     sort: {
         by: 'rating',
@@ -35,14 +35,16 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_DATA':
+        case 'GET_DATA': {
             // временное решение — просто кладу data в filteredData
             return {
                 ...state,
                 filteredData: state.data,
-            }
-        case 'SET_FILTERS':
+            };
+        }
+        case 'SET_FILTERS': {
             const { platform, ratingRange } = action.payload;
+            // TODO: переписать фильтры по платформе на массив
             return {
                 ...state,
                 filters: { platform, ratingRange },
@@ -51,7 +53,8 @@ export const reducer = (state = initialState, action) => {
                     (item.rating >= ratingRange[0] && item.rating <= ratingRange[1])
                 ),
             };
-        case 'SORT_DATA':
+        }
+        case 'SORT_DATA': {
             const { by, order } = action.payload;
             const sortedData = [...state.filteredData].sort((a, b) => {
                 switch (by) {
@@ -68,6 +71,7 @@ export const reducer = (state = initialState, action) => {
                 filteredData: sortedData,
                 sort: { by, order },
             };
+        }
         default:
             return state;
     }
