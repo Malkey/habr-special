@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../../redux/actions';
+import './Table.css';
 
 const Table = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Table = () => {
     ));
     
     return (
-        <table style={{ textAlign: 'left' }}>
+        <table>
             <thead>
                 <tr>
                     <th>Платформа</th>

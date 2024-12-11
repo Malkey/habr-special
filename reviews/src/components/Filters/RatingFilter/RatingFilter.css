@@ -1,0 +1,13 @@
+.rating-filters > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.rating-filters input {
+    max-width: 80px;
+}
+
+.rating-filters p {
+    font-weight: bold;
+}

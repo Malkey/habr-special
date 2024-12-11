@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilters } from '../../../redux/actions';
+import './RatingFilter.css';
 
 const RatingFilter = () => {
     const dispatch = useDispatch();
@@ -23,11 +24,27 @@ const RatingFilter = () => {
     }, [filters, dispatch]);
 
     return (
-        <>
-            <p>Рейтинг:</p>
-            <input type="number" name="gte" value={filters.ratingRange[0]} placeholder="min" ref={ratingFilterGte} onChange={handleRatingFilter} />
-            <input type="number" name="lte" value={filters.ratingRange[1]} placeholder="max" ref={ratingFilterLte} onChange={handleRatingFilter} />
-        </>
+        <div className='rating-filters'>
+            <p>Рейтинг</p>
+            <div>
+                <input 
+                    type="number"
+                    name="gte"
+                    value={filters.ratingRange[0]}
+                    placeholder="min"
+                    ref={ratingFilterGte}
+                    onChange={handleRatingFilter}
+                />
+                <input 
+                    type="number"
+                    name="lte"
+                    value={filters.ratingRange[1]}
+                    placeholder="max"
+                    ref={ratingFilterLte}
+                    onChange={handleRatingFilter}
+                />
+            </div>
+        </div>
     );
 };
 

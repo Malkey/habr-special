@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux'
 import { sortData } from '../../redux/actions';
+import './Sorting.css';
 
 const Filters = () => {
     const dispatch = useDispatch();
@@ -13,9 +14,9 @@ const Filters = () => {
     }, [dispatch]);
 
     return (
-        <div style={{ textAlign: 'left', marginBottom: '30px' }}>
+        <div className="sorting">
             <div>
-                <p>Сортировать по дате:</p>
+                <p>Сортировать по дате</p>
                 <label>
                     Сначала новые
                     <input type="radio" name="date" value="desc" onChange={handleChange} />
@@ -27,7 +28,7 @@ const Filters = () => {
             </div>
 
             <div>
-                <p>Сортировать по оценке:</p>
+                <p>Сортировать по оценке</p>
                 <label>
                     По убыванию
                     <input type="radio" name="rating" value="desc" onChange={handleChange} />

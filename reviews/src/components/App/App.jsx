@@ -6,9 +6,13 @@ import './App.css'
 function App() {
   return (
     <>
-      <Filters />
-      <Sorting />
-      <Table />
+      <div className="filters">
+        <Filters />
+        <Sorting />
+      </div>
+      <div className="data">
+        <Table />
+      </div>
     </>
   )
 }

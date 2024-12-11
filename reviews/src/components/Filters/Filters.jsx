@@ -3,7 +3,7 @@ import PlatformFilter from './PlatformFilter/PlatformFilter';
 
 const Filters = () => {
     return (
-        <div style={{ textAlign: 'left', marginBottom: '30px' }}>
+        <div>
             <PlatformFilter />
             <RatingFilter />
         </div>

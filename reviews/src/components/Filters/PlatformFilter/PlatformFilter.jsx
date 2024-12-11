@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilters } from '../../../redux/actions';
+import './PlatformFilter.css'
 
 const PlatformFilter = () => {
     const dispatch = useDispatch();
@@ -30,24 +31,36 @@ const PlatformFilter = () => {
     }, [filters, dispatch]);
 
     return (
-        <>
+        <div className="platform-filter">
             <p>Фильтр по платформе</p>
 
             <form onChange={handlePlatformFilter}>
                 <label>
-                    <input type="checkbox" value="Google" ref={platformCheckbox1} />
+                    <input
+                        type="checkbox"
+                        value="Google"
+                        ref={platformCheckbox1}
+                    />
                     Google
                 </label>
                 <label>
-                    <input type="checkbox" value="Яндекс" ref={platformCheckbox2} />
+                    <input
+                        type="checkbox"
+                        value="Яндекс"
+                        ref={platformCheckbox2}
+                    />
                     Яндекс
                 </label>
                 <label>
-                    <input type="checkbox" value="2ГИС" ref={platformCheckbox3} />
+                    <input
+                        type="checkbox"
+                        value="2ГИС"
+                        ref={platformCheckbox3}
+                    />
                     2ГИС
                 </label>
             </form>
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,23 @@
+.sorting {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sorting [type='radio'] {
+    display: none;
+}
+
+.sorting label {
+    display: flex;
+    padding: 0.2rem 0;
+}
+
+.sorting label:hover {
+    cursor: pointer;
+    color: #666;
+}
+
+.sorting p {
+    font-weight: bold;
+}
