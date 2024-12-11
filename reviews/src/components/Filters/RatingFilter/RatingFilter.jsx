@@ -16,11 +16,12 @@ const RatingFilter = () => {
             ratingFilterLte.current.value,
         ];
 
-        // TODO: добавить проверку на отрицательное число
-        dispatch(setFilters({
-            ...filters,
-            ratingRange: [ gte, lte ],
-        }));
+        if (gte >= 0 && lte >= 0) {
+            dispatch(setFilters({
+                ...filters,
+                ratingRange: [ gte, lte ],
+            }));
+        }        
     }, [filters, dispatch]);
 
     return (
