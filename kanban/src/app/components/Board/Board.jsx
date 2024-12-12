@@ -16,30 +16,30 @@ const Board = () => {
 
     const [, dropInProgress] = useDrop({
         accept: 'CARD',
-        drop: (id) => {
+        drop: (item) => {
             dispatch(changeStatus({
-                cardId: id.id,
-                cardStatus: 'in-progress',
+                id: item.id,
+                newStatus: 'in-progress',
             }));
         },
     });
 
     const [, dropUnderReview] = useDrop({
         accept: 'CARD',
-        drop: (id) => {
+        drop: (item) => {
             dispatch(changeStatus({
-                cardId: id.id,
-                cardStatus: 'under-review',
+                id: item.id,
+                newStatus: 'under-review',
             }));
         },
     });
 
     const [, dropCompleted] = useDrop({
         accept: 'CARD',
-        drop: (id) => {
+        drop: (item) => {
             dispatch(changeStatus({
-                cardId: id.id,
-                cardStatus: 'completed',
+                id: item.id,
+                newStatus: 'completed',
             }));
         },
     });

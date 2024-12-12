@@ -11,12 +11,14 @@ export const reducer = (state = initialState, action) => {
             return [...state, action.payload];
         }
         case 'CHANGE_STATUS': {
-            const { cardId, cardStatus } = action.payload;
-            return state.map((card) => (
-                card.id === cardId 
-                    ? { ...card, status: cardStatus } 
-                    : card
-            ));
+            const { id, newStatus } = action.payload;
+
+            const card = state.find(card => card.id === id);
+            card.status = newStatus;
+
+            const newState = state.filter(card => card.id !== id);
+
+            return [...newState, card];
         }
         default:
             return state;
