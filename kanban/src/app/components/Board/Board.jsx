@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import Card from './../Card/Card';
 import styles from './board.module.css';
 
 const Board = () => {
+    const cards = useSelector(state => state);
+    console.log(cards);
 
     return (
         <>
@@ -29,6 +32,5 @@ const Board = () => {
         </>
     );
 };
-
 
 export default Board;
