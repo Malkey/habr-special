@@ -11,7 +11,12 @@ export const reducer = (state = initialState, action) => {
             return [...state, action.payload];
         }
         case 'CHANGE_STATUS': {
-            return state;
+            const { cardId, cardStatus } = action.payload;
+            return state.map((card) => (
+                card.id === cardId 
+                    ? { ...card, status: cardStatus } 
+                    : card
+            ));
         }
         default:
             return state;

@@ -1,9 +1,22 @@
+import { useDrag } from 'react-dnd';
 import styles from './card.module.css';
 
-const Card = ({ title }) => {
+const Card = ({ id, title }) => {
+    const [{ opacity }, dragRef] = useDrag({
+        type: 'CARD',
+        item: { id },
+        collect: (monitor) => ({
+          isDragging: monitor.isDragging(),
+        }),
+    });
+
     return (
-        <div className={styles.card} draggable>
-            <p>{title}</p>
+        <div
+            ref={dragRef}
+            className={styles.card}
+            style={{ opacity }}
+        >
+            {title}
         </div>
     );
 };

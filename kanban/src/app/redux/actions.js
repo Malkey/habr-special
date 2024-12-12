@@ -3,8 +3,9 @@ const addCard = (newCard) => ({
     payload: newCard,
 });
 
-const changeStatus = () => ({
+const changeStatus = ({ cardId, cardStatus }) => ({
     type: 'CHANGE_STATUS',
+    payload: { cardId, cardStatus }
 });
 
 export {
