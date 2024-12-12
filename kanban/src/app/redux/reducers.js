@@ -8,7 +8,7 @@ const initialState = [
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_CARD': {
-            return state;
+            return [...state, action.payload];
         }
         case 'CHANGE_STATUS': {
             return state;
