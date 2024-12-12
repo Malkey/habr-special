@@ -46,12 +46,17 @@ const Board = () => {
 
     const handleFormSubmit = useCallback((e) => {
         e.preventDefault();
-        
-        dispatch(addCard({
-            id: getId(),
-            title: input.current.value.trim(),
-            status: "in-progress"
-        }));
+        const value = input.current.value.trim();
+
+        if (value !== '') {
+            dispatch(addCard({
+                id: getId(),
+                title: value,
+                status: "in-progress"
+            }));
+        }
+
+        e.target.reset();
     }, [dispatch]);
     
     return (

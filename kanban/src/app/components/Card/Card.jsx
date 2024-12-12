@@ -6,7 +6,7 @@ const Card = ({ id, title }) => {
         type: 'CARD',
         item: { id },
         collect: (monitor) => ({
-          isDragging: monitor.isDragging(),
+            opacity: monitor.isDragging() ? 0.5 : 1,
         }),
     });
 
