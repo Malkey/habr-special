@@ -60,7 +60,7 @@ const Board = () => {
 
             <div className={styles.board}>
                 <div ref={dropInProgress} className={styles.column}>
-                    <h2>В работе</h2>
+                    <h2 className={styles.h2}>В работе</h2>
                     {cards.map(card => (
                         card.status === 'in-progress' && 
                         <Card
@@ -80,7 +80,7 @@ const Board = () => {
                 </div>
 
                 <div ref={dropUnderReview} className={styles.column}>
-                    <h2>На проверке</h2>
+                    <h2 className={styles.h2}>На проверке</h2>
                     {cards.map(card => (
                         card.status === 'under-review' && 
                         <Card
@@ -92,7 +92,7 @@ const Board = () => {
                 </div>
 
                 <div ref={dropCompleted} className={styles.column}>
-                    <h2>Завершено</h2>
+                    <h2 className={styles.h2}>Завершено</h2>
                     {cards.map(card => (
                         card.status === 'completed' && 
                         <Card

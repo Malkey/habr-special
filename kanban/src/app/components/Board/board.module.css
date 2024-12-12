@@ -1,9 +1,14 @@
+.h2 {
+    color: #ededed;
+}
+
 .board {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 1rem;
     overflow-x: auto;
+    min-height: 80vh;
 }
 
 .column {
@@ -23,5 +28,5 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
     color: #1a1a1a;
-    background-color: white;
+    background-color: #ededed;
 }
