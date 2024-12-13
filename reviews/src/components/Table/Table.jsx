@@ -5,13 +5,13 @@ import './Table.css';
 
 const Table = () => {
     const dispatch = useDispatch();
-    const { filteredData, loading, error } = useSelector((state) => state);
+    const { visibleData, loading, error } = useSelector((state) => state);
 
     useEffect(() => {
         dispatch(getData());
     }, [dispatch]);
 
-    const rows = filteredData.map(item => (
+    const rows = visibleData.map(item => (
         <tr key={item.id}>
             <td>{item.platform}</td>
             <td>{item.rating}</td>

@@ -2,7 +2,7 @@ import { sortData } from "./../utils/sortData";
 
 const initialState = {
     data: [],
-    filteredData: [],
+    visibleData: [],
     loading: false,
     error: null,
     filters: {
@@ -25,15 +25,14 @@ const reducer = (state = initialState, action) => {
             };
         }
         case 'GET_DATA_SUCCESS': {
-            const data = action.payload;
             const { by, order } = state.sort;
-            const sortedData = sortData(data, by, order);
+            const sortedData = sortData(action.payload, by, order);
 
             return {
                 ...state,
-                data,
                 loading: false,
-                filteredData: sortedData,
+                data: sortedData,
+                visibleData: sortedData,
             };   
         }
         case 'GET_DATA_FAIL': {
@@ -48,7 +47,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 filters: { platforms, ratingRange },
-                filteredData: state.data.filter(item =>
+                visibleData: state.data.filter(item =>
                     (platforms.length ? platforms.includes(item.platform) : true) &&
                     (item.rating >= ratingRange[0] && item.rating <= ratingRange[1])
                 ),
@@ -56,10 +55,12 @@ const reducer = (state = initialState, action) => {
         }
         case 'SORT_DATA': {
             const { by, order } = action.payload;
-            const sortedData = sortData(state.filteredData, by, order);
+            const sortedData = sortData(state.data, by, order);
+            const sortedVisibleData = sortData(state.visibleData, by, order);
             return {
                 ...state,
-                filteredData: sortedData,
+                data: sortedData,
+                visibleData: sortedVisibleData,
                 sort: { by, order },
             };
         }
