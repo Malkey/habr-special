@@ -5,11 +5,11 @@ import './Table.css';
 
 const Table = () => {
     const dispatch = useDispatch();
-    const { filteredData } = useSelector((state) => state);
+    const { filteredData, loading, error } = useSelector((state) => state);
 
     useEffect(() => {
         dispatch(getData());
-    }, []);
+    }, [dispatch]);
 
     const rows = filteredData.map(item => (
         <tr key={item.id}>
@@ -21,19 +21,23 @@ const Table = () => {
     ));
     
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Платформа</th>
-                    <th>Рейтинг</th>
-                    <th>Время добавления</th>
-                    <th>Текст отзыва</th>
-                </tr>
-            </thead>
-            <tbody>
-                {rows}
-            </tbody>
-        </table>
+        loading
+            ?   <p>Данные загружаются</p>
+            :   error
+                ?   <p>При загрузке данных произошла ошибка: {error}</p>
+                :   <table>
+                        <thead>
+                            <tr>
+                                <th>Платформа</th>
+                                <th>Рейтинг</th>
+                                <th>Время добавления</th>
+                                <th>Текст отзыва</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </table>
     );
 };
 

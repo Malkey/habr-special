@@ -1,30 +1,10 @@
 import { sortData } from "./../utils/sortData";
 
 const initialState = {
-    data: [
-        {
-            id: 1,
-            platform: "Google",
-            rating: 4,
-            date: "2023-11-15T10:00:00Z",
-            text: "Отличный сервис!",
-        },
-        {
-            id: 2,
-            platform: "Яндекс",
-            rating: 3,
-            date: "2023-11-14T09:00:00Z",
-            text: "Хорошо, но есть недочеты.",
-        },
-        {
-            id: 3,
-            platform: "2ГИС",
-            rating: 5,
-            date: "2023-11-13T08:00:00Z",
-            text: "Прекрасно!",
-        },
-    ],
+    data: [],
     filteredData: [],
+    loading: false,
+    error: null,
     filters: {
         platforms: [],
         ratingRange: [1, 10],
@@ -35,15 +15,31 @@ const initialState = {
     },
 };
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_DATA': {
-            const { data } = state;
-            const { by, order } = state.sort;
-            const sortedData = sortData(data, by, order);
+        case 'GET_DATA_REQUEST': {
             return {
                 ...state,
+                loading: true,
+                error: null,
+            };
+        }
+        case 'GET_DATA_SUCCESS': {
+            const data = action.payload;
+            const { by, order } = state.sort;
+            const sortedData = sortData(data, by, order);
+
+            return {
+                ...state,
+                loading: false,
                 filteredData: sortedData,
+            };   
+        }
+        case 'GET_DATA_FAIL': {
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
             };
         }
         case 'SET_FILTERS': {
@@ -70,3 +66,5 @@ export const reducer = (state = initialState, action) => {
             return state;
     }
 };
+
+export default reducer;
