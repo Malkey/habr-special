@@ -1,8 +1,26 @@
-# React + Vite
+# Reviews — одностраничное приложение для просмотра списка отзывов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Запуск проекта в режиме разработки
 
-Currently, two official plugins are available:
+1. Перейдите в директорию проекта `cd reviews`
+2. Установите зависимости `npm install`
+3. Запустите локальный веб-сервер `npm run dev`
+4. Откройте [http://localhost:5173/](http://localhost:5173/)
+5. Страница автоматически перезагрузится, если вы внесёте изменения в код проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Сборка прод-версии приложения
+
+1. Перейдите в директорию проекта `cd reviews`
+2. Установите зависимости `npm install`
+3. Выполните команду `npm run build`
+4. Собранный проект будет находится в папке `dist`
+5. Содержимое этой папки можно деплоить
+
+## Просмотр прод-версии приложения
+
+Собранный проект можно просмотреть в режиме preview
+
+1. Перейдите в директорию проекта `cd reviews`
+2. Установите зависимости `npm install`
+3. Выполните команду `npm run preview`
+4. Откройте [http://localhost:4173/](http://localhost:4173/)
