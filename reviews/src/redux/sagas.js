@@ -7,7 +7,7 @@ const fetchData = () => {
         setTimeout(() => {
             resolve(reviews);
             // reject(new Error('ОШИБКА'));
-        }, 1500);
+        }, 300);
     });
 }
 

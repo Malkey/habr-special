@@ -21,12 +21,12 @@ const RatingFilter = () => {
                 ...filters,
                 ratingRange: [ gte, lte ],
             }));
-        }        
+        }
     }, [filters, dispatch]);
 
     return (
         <div className='rating-filters'>
-            <p>Рейтинг</p>
+            <p>Фильтр по рейтингу</p>
             <form>
                 <input 
                     type="number"
@@ -35,6 +35,8 @@ const RatingFilter = () => {
                     placeholder="min"
                     ref={ratingFilterGte}
                     onChange={handleRatingFilter}
+                    min='1'
+                    max='5'
                 />
                 <input 
                     type="number"
@@ -43,6 +45,8 @@ const RatingFilter = () => {
                     placeholder="max"
                     ref={ratingFilterLte}
                     onChange={handleRatingFilter}
+                    min='1'
+                    max='5'
                 />
             </form>
         </div>

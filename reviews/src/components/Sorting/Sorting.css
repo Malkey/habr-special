@@ -4,6 +4,10 @@
     gap: 0.5rem;
 }
 
+.sorting p {
+    color: #666;
+}
+
 .sorting [type='radio'] {
     display: none;
 }
@@ -16,6 +20,14 @@
 .sorting label:hover {
     cursor: pointer;
     color: #666;
+}
+
+.sorting label:has([type='radio']:checked) {
+    font-weight: bold;
+}
+
+.sorting label:has([type='radio']:checked):hover {
+    color: inherit;
 }
 
 .sorting p {

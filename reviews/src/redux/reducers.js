@@ -7,7 +7,7 @@ const initialState = {
     error: null,
     filters: {
         platforms: [],
-        ratingRange: [1, 10],
+        ratingRange: [1, 5],
     },
     sort: {
         by: 'date',
@@ -31,6 +31,7 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
+                data,
                 loading: false,
                 filteredData: sortedData,
             };   
