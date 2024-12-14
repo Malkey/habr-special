@@ -1,3 +1,5 @@
+import { getDeclension } from "./getDeclension";
+
 const createElements = () => {
   const li = document.createElement('li');
   const span = document.createElement('span');
@@ -10,8 +12,9 @@ const createElements = () => {
 
 const renderTimer = (elements, timer, time) => {
   const { span, btn } = elements;
+  const seconds = getDeclension(time, ['секунда', 'секунды', 'секунд']);
 
-  span.innerHTML = `Осталось ${time} секунд`;
+  span.innerHTML = `Осталось ${time} ${seconds}`;
   btn.innerHTML = '&times;';
 
   btn.addEventListener('click', () => {
