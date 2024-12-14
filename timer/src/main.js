@@ -7,7 +7,7 @@ const render = (app) => {
     <form>
       <label for="time-input">
         <p>Введите время в секундах</p>
-        <input type="number" id="time-input">
+        <input type="number" id="time-input" min="1">
       </label>
       <button type="submit" id="add-timer">Запустить таймер</button>
     </form>
