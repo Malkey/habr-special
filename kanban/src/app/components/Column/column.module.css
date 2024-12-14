@@ -1,0 +1,23 @@
+.h2 {
+    color: #ededed;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgb(13, 76, 128);
+    gap: 1rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: #1a1a1a;
+    background-color: #ededed;
+}
