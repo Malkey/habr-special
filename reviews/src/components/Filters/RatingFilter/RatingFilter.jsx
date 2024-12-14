@@ -10,13 +10,29 @@ const RatingFilter = () => {
     const ratingFilterGte = useRef();
     const ratingFilterLte = useRef();
 
-    const handleRatingFilter = useCallback(() => {
-        const [ gte, lte ] = [ 
+    const handleRatingFilter = useCallback((e) => {
+        const [ gteValue, lteValue ] = [ 
             ratingFilterGte.current.value, 
             ratingFilterLte.current.value,
         ];
 
-        if (gte >= 0 && lte >= 0) {
+        let gte = gteValue;
+        let lte = lteValue;
+
+        if (gteValue > lteValue) {
+            switch (e.target.name) {
+                case 'lte':
+                    gte = +gteValue - 1;
+                    break;
+                case 'gte':
+                    lte = +lteValue + 1;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (gteValue >= 0 && lteValue >= 0) {
             dispatch(setFilters({
                 ...filters,
                 ratingRange: [ gte, lte ],
