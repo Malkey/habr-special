@@ -1,4 +1,4 @@
-import { sortData } from "./../utils/sortData";
+import { sortData, filterData } from "./../utils/";
 
 const initialState = {
     data: [],
@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 data: sortedData,
-                visibleData: sortedData,
+                visibleData: filterData(sortedData, state.filters),
             };   
         }
         case 'GET_DATA_FAIL': {
@@ -47,10 +47,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 filters: { platforms, ratingRange },
-                visibleData: state.data.filter(item =>
-                    (platforms.length ? platforms.includes(item.platform) : true) &&
-                    (item.rating >= ratingRange[0] && item.rating <= ratingRange[1])
-                ),
+                visibleData: filterData(state.data, action.payload),
             };
         }
         case 'SORT_DATA': {
