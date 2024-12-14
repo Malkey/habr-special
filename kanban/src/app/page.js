@@ -5,6 +5,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Board from "./components/Board/Board";
 import styles from "./page.module.css";
+import './i18n';
 
 export default function Home() {
   return (

@@ -2,6 +2,7 @@ import { useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, changeStatus } from '../../slices/cardsSlice';
 import { useDrop } from 'react-dnd';
+import { useTranslation } from "react-i18next";
 import Card from "../Card/Card";
 import styles from './column.module.css';
 
@@ -13,13 +14,8 @@ const Column = ({ name }) => {
     const cards = useSelector(state => state.cards);
     const dispatch = useDispatch();
     const input = useRef();
+    const { t } = useTranslation();
 
-    const title = {
-        'in-progress': 'В работе',
-        'under-review': 'На проверке',
-        'completed': 'Завершено',
-    }
-    
     const [, dropRef] = useDrop({
         accept: 'CARD',
         drop: (item) => {
@@ -47,7 +43,9 @@ const Column = ({ name }) => {
 
     return (
         <div ref={dropRef} className={styles.column}>
-            <h2 className={styles.h2}>{title[name]}</h2>
+            <h2 className={styles.h2}>
+                {t(`columns.${name}`)}
+            </h2>
 
             {cards.map(card => (
                 card.status === name && 
