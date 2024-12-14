@@ -26,6 +26,7 @@ const Filters = () => {
                     Сначала новые
                     <input
                         type="radio"
+                        className='visually-hidden'
                         name="sort"
                         data-by="date"
                         data-order="desc"
@@ -37,6 +38,7 @@ const Filters = () => {
                     Сначала старые
                     <input
                         type="radio"
+                        className='visually-hidden'
                         name="sort"
                         data-by="date"
                         data-order="asc"
@@ -52,6 +54,7 @@ const Filters = () => {
                     По убыванию
                     <input
                         type="radio"
+                        className='visually-hidden'
                         name="sort"
                         data-by="rating"
                         data-order="desc"
@@ -63,6 +66,7 @@ const Filters = () => {
                     По возрастанию
                     <input
                         type="radio"
+                        className='visually-hidden'
                         name="sort"
                         data-by="rating"
                         data-order="asc"
