@@ -30,16 +30,23 @@ const PlatformFilter = () => {
         }));
     }, [filters, dispatch]);
 
+    const isChecked = useCallback(
+        (platform) => filters.platforms.includes(platform),
+        [filters.platforms]
+    );
+
     return (
         <div className="platform-filter">
             <p>Фильтр по платформе</p>
 
-            <form onChange={handlePlatformFilter}>
+            <form>
                 <label>
                     <input
                         type="checkbox"
                         value="Google"
                         ref={platformCheckbox1}
+                        checked={isChecked("Google")}
+                        onChange={handlePlatformFilter}
                     />
                     Google
                 </label>
@@ -48,6 +55,8 @@ const PlatformFilter = () => {
                         type="checkbox"
                         value="Яндекс"
                         ref={platformCheckbox2}
+                        checked={isChecked("Яндекс")}
+                        onChange={handlePlatformFilter}
                     />
                     Яндекс
                 </label>
@@ -56,6 +65,8 @@ const PlatformFilter = () => {
                         type="checkbox"
                         value="2ГИС"
                         ref={platformCheckbox3}
+                        checked={isChecked("2ГИС")}
+                        onChange={handlePlatformFilter}
                     />
                     2ГИС
                 </label>
