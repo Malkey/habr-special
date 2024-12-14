@@ -17,6 +17,10 @@ const renderTimer = (elements, timer, time) => {
   span.innerHTML = `Осталось ${time} ${seconds}`;
   btn.innerHTML = '&times;';
 
+  if (time < 4) {
+    span.style.color = 'rgb(190, 7, 7)';
+  }
+
   btn.addEventListener('click', () => {
     removeTimer(elements, timer);
   });
