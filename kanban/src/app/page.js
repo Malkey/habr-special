@@ -1,6 +1,6 @@
 'use client';
 import { Provider } from "react-redux";
-import store from './redux/store';
+import store from './slices/index';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Board from "./components/Board/Board";

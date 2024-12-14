@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCard, changeStatus } from './../../redux/actions';
+import { addCard, changeStatus } from './../../slices/cardsSlice';
 import { useDrop } from "react-dnd";
 import Card from './../Card/Card';
 import styles from './board.module.css';
@@ -11,7 +11,7 @@ const getId = () => {
 
 const Board = () => {
     const dispatch = useDispatch();
-    const cards = useSelector(state => state);
+    const cards = useSelector(state => state.cards);
     const input = useRef();
 
     const [, dropInProgress] = useDrop({
